@@ -1,0 +1,21 @@
+# 环境变量（含 API Key，绝不提交）
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 会话日志（JSONL）：运行时产物，不进仓库
+sessions/
+
+# 测试缓存（可再生产物）
+.pytest_cache/
+
+# 一次性暂存区 / 调试输出 / 备份：含本机绝对路径，不进仓库
+archive/
+*.bak
+
+#开发记录
+docs/

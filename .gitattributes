@@ -1,0 +1,4 @@
+# 行尾策略：仓库内统一 LF 存储 + LF 检出，跨平台可复现。
+# 本项目对 EOL 逐字节敏感（agent/tools.py 有 CRLF/LF 探测与保留逻辑），
+# 而本机 core.autocrlf=true，不声明就会在别人 clone 时被改写 → 假 diff / 假失败。
+* text=auto eol=lf

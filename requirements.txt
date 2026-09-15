@@ -1,0 +1,21 @@
+# Coding Agent MVP 依赖
+# openai: 官方 SDK，DeepSeek / 通义 / Kimi 等都兼容 OpenAI 接口格式，可直接复用
+openai>=1.40.0
+# python-dotenv: 从 .env 文件读取环境变量（API Key 等敏感配置不写死在代码里）
+python-dotenv>=1.0.0
+# regex: 第三方正则库，匹配函数支持 timeout=，可中断单次灾难性回溯（stdlib re 不支持）
+regex>=2024.5.15
+
+# ===== Web 层（阶段三·b：FastAPI + SSE）=====
+# 只有跑 web 模式才需要；CLI 模式（python main.py）不 import 它们
+fastapi>=0.110
+# [standard] 带 httptools/uvloop/websockets 等加速件；本机实测 uvicorn 0.51
+uvicorn[standard]>=0.29
+
+# ===== 测试 =====
+# httpx: web 端到端测试的客户端（也是 fastapi.testclient 的底座）
+#      ⚠️ 不要用 httpx.ASGITransport 测 SSE：它会把响应整个缓冲下来，
+#      SSE 这种"永不结束"的响应会直接卡死（实测见 webtodolist §1.4）
+# pytest-asyncio: 跑 async 用例（pytest.ini 里 asyncio_mode = auto）
+httpx>=0.27
+pytest-asyncio>=0.23

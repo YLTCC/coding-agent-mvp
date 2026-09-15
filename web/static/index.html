@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coding Agent Web</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div id="app">
+  <aside id="sidebar">
+    <h1>Coding Agent</h1>
+    <div class="new-session">
+      <input id="ws-name" placeholder="工作区名字（相对根，可留空）" autocomplete="off">
+      <button id="create-btn">新建会话</button>
+    </div>
+    <ul id="session-list"></ul>
+    <p class="hint">
+      同名工作区 = <b>显式共享</b>：两个会话会看到同一批文件，
+      并发写不会报错、只会静默覆盖。标记为「共享工作区」的就在这条线上。
+    </p>
+  </aside>
+
+  <main id="main">
+    <header id="topbar">
+      <div id="title">未选择会话</div>
+      <div id="shared-banner" class="hidden"></div>
+      <div id="stats"></div>
+    </header>
+
+    <section id="stream"></section>
+
+    <footer id="composer">
+      <textarea id="input" rows="2" placeholder="给 Agent 派个任务…（Ctrl+Enter 发送）"></textarea>
+      <button id="send-btn">发送</button>
+    </footer>
+  </main>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
